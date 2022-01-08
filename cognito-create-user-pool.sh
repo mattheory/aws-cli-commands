@@ -11,6 +11,30 @@ aws cognito-identity create-identity-pool \
 aws iam create-role --role-name Cognito_DynamoPoolUnauth --assume-role-policy-document file://myCognitoPolicy.json --output json
 
 
+#content of myCognitoPolicy.json:
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "cognito-identity.amazonaws.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "cognito-identity.amazonaws.com:aud": "us-east-1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "ForAnyValue:StringLike": {
+          "cognito-identity.amazonaws.com:amr": "unauthenticated"
+        }
+      }
+    }
+  ]
+}
+
+
 #grant the "Cognito_DynamoPoolUnauth" role read access to DynamoDB by attaching managed policy: AmazonDynamoDBReadOnlyAccess
 
 aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AmazonDynamoDBReadOnlyAccess --role-name Cognito_DynamoPoolUnauth 
