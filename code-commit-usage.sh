@@ -28,3 +28,9 @@ git commit -m "added test.txt" #commit with comments (using default username & e
 git log #check repo's log
 
 git push -u origin main #push to main branch
+
+#in case of issues:
+
+git status -z -u#show active / current repos cloned on the system (and maybe monitored folders)
+
+git reset #clear list above
