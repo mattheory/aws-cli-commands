@@ -1,14 +1,14 @@
-%Launch Amazon Linux 2 instance with a role including "CloudWatchAgentServerPolicy"
+#Launch Amazon Linux 2 instance with a role including "CloudWatchAgentServerPolicy"
 
-#!/bin/bash    %bootstrap script
+#!/bin/bash    #bootstrap script
 yum update -y
 
-sudo yum install amazon-cloudwatch-agent -y     %nstall the CloudWatch Agent
+sudo yum install amazon-cloudwatch-agent -y     #nstall the CloudWatch Agent
 
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard     %configure the CloudWatch agent
-%Say no to monitoring CollectD
-%Monitor /var/log/messages
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard    #configure the CloudWatch agent
+#Say no to monitoring CollectD
+#Monitor /var/log/messages
 
-cd /opt/aws/amazon-cloudwatch-agent/bin      %/opt/aws/amazon-cloudwatch-agent/bin/config.json is the config file
+cd /opt/aws/amazon-cloudwatch-agent/bin      #/opt/aws/amazon-cloudwatch-agent/bin/config.json is the config file
 
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json %start CloudWatch Agent
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json #start CloudWatch Agent
