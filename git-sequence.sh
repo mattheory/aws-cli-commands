@@ -14,3 +14,8 @@ git commit -m "my comments here"
 git status #optional
 
 git push
+
+
+#after this (or system has restarted?):
+
+git pull
