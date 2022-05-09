@@ -1,0 +1,1 @@
+tar -cf - /Logs/April | aws s3 cp - s3://mybucket/batch01.tar
